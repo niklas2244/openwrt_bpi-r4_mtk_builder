@@ -1,4 +1,4 @@
-### BPI-R4_MTK_Builder
+### openwrt_bpi-r4_mtk_builder
 
 Run on Ubuntu 22.04 or later
 
