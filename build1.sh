@@ -26,7 +26,7 @@ wget https://raw.githubusercontent.com/woziwrt/bpi-r4-openwrt-builder/refs/heads
  #-O mtk-openwrt-feeds/autobuild/unified/filogic/mac80211/24.10/files/package/kernel/mt76/patches/99999_tx_power_check.patch
 
 ### fix "use-tx_power-from-default-fw-if-EEPROM-contains-0"
-wget https://github.com/danpawlik/mt76/commit/da5a863b4ec170d9022b777ccd13989873602c65.patch \
+wget https://github.com/openwrt/mt76/commit/aaf90b24fde77a38ee9f0a60d7097ded6a94ad1f.patch \
  -O mtk-openwrt-feeds/autobuild/unified/filogic/mac80211/24.10/files/package/kernel/mt76/patches/9997-use-tx_power-from-default-fw-if-EEPROM-contains-0s.patch
 
 ### required & thermal zone 
