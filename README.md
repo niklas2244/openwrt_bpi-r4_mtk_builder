@@ -8,9 +8,9 @@ Run on Ubuntu 22.04 or later
 
 `git clone https://github.com/Rahzadan/openwrt_bpi-r4_mtk_builder.git`
 
-`chmod 776 -R openwrt_bpi-r4_mtk_builder.git`
+`chmod 776 -R openwrt_bpi-r4_mtk_builder`
 
-`cd openwrt_bpi-r4_mtk_builder.git`
+`cd openwrt_bpi-r4_mtk_builder`
 
 `./build1.sh`
 
