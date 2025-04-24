@@ -15,6 +15,8 @@ git clone https://github.com/gSpotx2f/luci-app-cpu-status.git feeds/luci/applica
 ### My Build Config
 \cp -r ../files/rahz_build.config .config
 
+### uncomment the line below to make your own config
+#make menuconfig
 make -j1 V=s
 
 exit 0
