@@ -17,6 +17,6 @@ git clone https://github.com/gSpotx2f/luci-app-cpu-status.git feeds/luci/applica
 
 ### uncomment the line below to make your own config
 #make menuconfig
-make -j1 V=s
+make -j$(nproc) V=s
 
 exit 0
