@@ -1,6 +1,6 @@
 ### openwrt_bpi-r4_mtk_builder
 
-Run on Ubuntu 22.04 or later
+Run on Ubuntu 24.04 or later
 
 `sudo apt update`
 
