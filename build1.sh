@@ -6,10 +6,10 @@ rm -rf mtk-openwrt-feeds
 
 ### clone required repos
 git clone --branch openwrt-24.10 https://git.openwrt.org/openwrt/openwrt.git openwrt || true
-cd openwrt; git checkout 78d517a18cf32402eac016d92d7bb8cc8b586119; cd -;		#toolchain: gdb: set -std=gnu17
+cd openwrt; git checkout 5db1b94b63d8b97a0d2409b11790b46373a1a20c; cd -;		#mediatek: add support for Routerich AX3000 v1
 git clone  https://git01.mediatek.com/openwrt/feeds/mtk-openwrt-feeds || true
-cd mtk-openwrt-feeds; git checkout 	3a0f22af03943d350d18042eaea1aa0b8136d716; cd -;	#add handshake with wifi when eth send reset done to wifi
-echo "3a0f22a" > mtk-openwrt-feeds/autobuild/unified/feed_revision
+cd mtk-openwrt-feeds; git checkout 	05e31529810b710afae006bc61c480124f65aaab; cd -;	#Refactor the SGMII PCS clock source change from PHYA for the NETSYSv3.1
+echo "05e3152" > mtk-openwrt-feeds/autobuild/unified/feed_revision
 
 ### wireless-regdb modification - this remove all regdb wireless countries restrictions
 rm -rf openwrt/package/firmware/wireless-regdb/patches/*.*
@@ -18,8 +18,8 @@ rm -rf mtk-openwrt-feeds/autobuild/unified/filogic/mac80211/24.10/files/package/
 \cp -r files/regdb.Makefile openwrt/package/firmware/wireless-regdb/Makefile
 
 ### jumbo frames support
-wget https://raw.githubusercontent.com/woziwrt/bpi-r4-openwrt-builder/refs/heads/main/my_files/750-mtk-eth-add-jumbo-frame-support-mt7998.patch \
- -O openwrt/target/linux/mediatek/patches-6.6/750-mtk-eth-add-jumbo-frame-support-mt7998.patch
+#wget https://raw.githubusercontent.com/woziwrt/bpi-r4-openwrt-builder/refs/heads/main/my_files/750-mtk-eth-add-jumbo-frame-support-mt7998.patch \
+ #-O openwrt/target/linux/mediatek/patches-6.6/750-mtk-eth-add-jumbo-frame-support-mt7998.patch
 
 ### original txpower fix
 #wget https://raw.githubusercontent.com/woziwrt/bpi-r4-openwrt-builder/refs/heads/main/my_files/99999_tx_power_check.patch \
