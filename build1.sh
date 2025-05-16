@@ -6,10 +6,10 @@ rm -rf mtk-openwrt-feeds
 
 ### clone required repos
 git clone --branch openwrt-24.10 https://git.openwrt.org/openwrt/openwrt.git openwrt || true
-cd openwrt; git checkout 5db1b94b63d8b97a0d2409b11790b46373a1a20c; cd -;		#mediatek: add support for Routerich AX3000 v1
+cd openwrt; git checkout 2bcc3163a6ea02919e699d0562032d821341fabb; cd -;		#ramips: pad EX400 kernel partition to retain web recovery
 git clone  https://git01.mediatek.com/openwrt/feeds/mtk-openwrt-feeds || true
-cd mtk-openwrt-feeds; git checkout 	05e31529810b710afae006bc61c480124f65aaab; cd -;	#Refactor the SGMII PCS clock source change from PHYA for the NETSYSv3.1
-echo "05e3152" > mtk-openwrt-feeds/autobuild/unified/feed_revision
+cd mtk-openwrt-feeds; git checkout 	9f3e0949fa9624d5ef7262b71ddfbacb6832079a; cd -;	#Add platform limitations for 9K jumbo frames
+echo "9f3e094" > mtk-openwrt-feeds/autobuild/unified/feed_revision
 
 ### wireless-regdb modification - this remove all regdb wireless countries restrictions
 rm -rf openwrt/package/firmware/wireless-regdb/patches/*.*
