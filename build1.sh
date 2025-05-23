@@ -6,10 +6,10 @@ rm -rf mtk-openwrt-feeds
 
 ### clone required repos
 git clone --branch openwrt-24.10 https://git.openwrt.org/openwrt/openwrt.git openwrt || true
-cd openwrt; git checkout 2bcc3163a6ea02919e699d0562032d821341fabb; cd -;		#ramips: pad EX400 kernel partition to retain web recovery
+cd openwrt; git checkout 01da18774984bcb6115230a9633891ff3c439f62; cd -;		#tools: add cmake dependency to bzip2
 git clone  https://git01.mediatek.com/openwrt/feeds/mtk-openwrt-feeds || true
-cd mtk-openwrt-feeds; git checkout 	9f3e0949fa9624d5ef7262b71ddfbacb6832079a; cd -;	#Add platform limitations for 9K jumbo frames
-echo "9f3e094" > mtk-openwrt-feeds/autobuild/unified/feed_revision
+cd mtk-openwrt-feeds; git checkout bd50289f854ff04c50becb4067c1356618f13602; cd -;	#Fix GRE/IPSec and VXLAN/IPSec decap unbind issue
+echo "bd50289" > mtk-openwrt-feeds/autobuild/unified/feed_revision
 
 ### wireless-regdb modification - this remove all regdb wireless countries restrictions
 rm -rf openwrt/package/firmware/wireless-regdb/patches/*.*
@@ -17,9 +17,9 @@ rm -rf mtk-openwrt-feeds/autobuild/unified/filogic/mac80211/24.10/files/package/
 \cp -r files/500-tx_power.patch mtk-openwrt-feeds/autobuild/unified/filogic/mac80211/24.10/files/package/firmware/wireless-regdb/patches
 \cp -r files/regdb.Makefile openwrt/package/firmware/wireless-regdb/Makefile
 
-### jumbo frames support
-#wget https://raw.githubusercontent.com/woziwrt/bpi-r4-openwrt-builder/refs/heads/main/my_files/750-mtk-eth-add-jumbo-frame-support-mt7998.patch \
- #-O openwrt/target/linux/mediatek/patches-6.6/750-mtk-eth-add-jumbo-frame-support-mt7998.patch
+### radio noise reading fix
+wget https://raw.githubusercontent.com/woziwrt/bpi-r4-openwrt-builder/refs/heads/main/my_files/200-wozi-libiwinfo-fix_noise_reading_for_radios.patch \
+ -O openwrt/package/network/utils/iwinfo/patches/200-wozi-libiwinfo-fix_noise_reading_for_radios.patch
 
 ### original txpower fix
 #wget https://raw.githubusercontent.com/woziwrt/bpi-r4-openwrt-builder/refs/heads/main/my_files/99999_tx_power_check.patch \
