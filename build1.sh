@@ -17,6 +17,9 @@ rm -rf mtk-openwrt-feeds/autobuild/unified/filogic/mac80211/24.10/files/package/
 \cp -r files/500-tx_power.patch mtk-openwrt-feeds/autobuild/unified/filogic/mac80211/24.10/files/package/firmware/wireless-regdb/patches
 \cp -r files/regdb.Makefile openwrt/package/firmware/wireless-regdb/Makefile
 
+### remove mtk strongswan uci support patch
+rm -rf mtk-openwrt-feeds/24.10/patches-feeds/108-strongswan-add-uci-support.patch
+
 ### radio noise reading fix
 wget https://raw.githubusercontent.com/woziwrt/bpi-r4-openwrt-builder/refs/heads/main/my_files/200-wozi-libiwinfo-fix_noise_reading_for_radios.patch \
  -O openwrt/package/network/utils/iwinfo/patches/200-wozi-libiwinfo-fix_noise_reading_for_radios.patch
