@@ -6,19 +6,16 @@ rm -rf mtk-openwrt-feeds
 
 ### clone required repos
 git clone --branch openwrt-24.10 https://git.openwrt.org/openwrt/openwrt.git openwrt || true
-cd openwrt; git checkout 2a348bdbef52adb99280f01ac285d4415e91f4d6; cd -;		#bcm27xx-gpu-fw: update to v1.20250430
+cd openwrt; git checkout 155eea44e7695c5cd017a240469cac57c19af64b; cd -;		#mediatek: Ruijie RG-X60 Pro: Fix LAN port status light
 git clone  https://git01.mediatek.com/openwrt/feeds/mtk-openwrt-feeds || true
-cd mtk-openwrt-feeds; git checkout f737b2f5f33d611f9e96f91ffccd0531700b6282; cd -;	#Add Airoha AN8831X 10G PHY driver package
-echo "f737b2f" > mtk-openwrt-feeds/autobuild/unified/feed_revision
+cd mtk-openwrt-feeds; git checkout 31c492d5c761176fcb15a3099f30d846450c01f5; cd -;	#[][openwrt-24][common][autobuild][Release OP-TEE for daily build]
+echo "31c492d" > mtk-openwrt-feeds/autobuild/unified/feed_revision
 
 ### wireless-regdb modification - this remove all regdb wireless countries restrictions
 rm -rf openwrt/package/firmware/wireless-regdb/patches/*.*
 rm -rf mtk-openwrt-feeds/autobuild/unified/filogic/mac80211/24.10/files/package/firmware/wireless-regdb/patches/*.*
 \cp -r files/500-tx_power.patch mtk-openwrt-feeds/autobuild/unified/filogic/mac80211/24.10/files/package/firmware/wireless-regdb/patches
 \cp -r files/regdb.Makefile openwrt/package/firmware/wireless-regdb/Makefile
-
-### remove mtk strongswan uci support patch
-rm -rf mtk-openwrt-feeds/24.10/patches-feeds/108-strongswan-add-uci-support.patch
 
 ### radio noise reading fix
 wget https://raw.githubusercontent.com/woziwrt/bpi-r4-openwrt-builder/refs/heads/main/my_files/200-wozi-libiwinfo-fix_noise_reading_for_radios.patch \
