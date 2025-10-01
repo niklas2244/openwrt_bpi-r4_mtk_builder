@@ -6,10 +6,10 @@ rm -rf mtk-openwrt-feeds
 
 ### clone required repos
 git clone --branch openwrt-24.10 https://git.openwrt.org/openwrt/openwrt.git openwrt || true
-cd openwrt; git checkout 155eea44e7695c5cd017a240469cac57c19af64b; cd -;		#mediatek: Ruijie RG-X60 Pro: Fix LAN port status light
-git clone  https://git01.mediatek.com/openwrt/feeds/mtk-openwrt-feeds || true
-cd mtk-openwrt-feeds; git checkout 31c492d5c761176fcb15a3099f30d846450c01f5; cd -;	#[][openwrt-24][common][autobuild][Release OP-TEE for daily build]
-echo "31c492d" > mtk-openwrt-feeds/autobuild/unified/feed_revision
+cd openwrt; git checkout bc9f1cab83d09f91e28c7ca830de778b08bd2842; cd -;
+git clone https://git01.mediatek.com/openwrt/feeds/mtk-openwrt-feeds || true
+cd mtk-openwrt-feeds; git checkout 2784de8784ef91fa4ffa21336b6c50eb6aaa70e8; cd -;
+echo "2784de8" > mtk-openwrt-feeds/autobuild/unified/feed_revision
 
 ### wireless-regdb modification - this remove all regdb wireless countries restrictions
 rm -rf openwrt/package/firmware/wireless-regdb/patches/*.*
