@@ -11,19 +11,9 @@ git clone https://git01.mediatek.com/openwrt/feeds/mtk-openwrt-feeds || true
 cd mtk-openwrt-feeds; git checkout 2784de8784ef91fa4ffa21336b6c50eb6aaa70e8; cd -;
 echo "2784de8" > mtk-openwrt-feeds/autobuild/unified/feed_revision
 
-### wireless-regdb modification - this remove all regdb wireless countries restrictions
-rm -rf openwrt/package/firmware/wireless-regdb/patches/*.*
-rm -rf mtk-openwrt-feeds/autobuild/unified/filogic/mac80211/24.10/files/package/firmware/wireless-regdb/patches/*.*
-\cp -r files/500-tx_power.patch mtk-openwrt-feeds/autobuild/unified/filogic/mac80211/24.10/files/package/firmware/wireless-regdb/patches
-\cp -r files/regdb.Makefile openwrt/package/firmware/wireless-regdb/Makefile
-
 ### radio noise reading fix
 wget https://raw.githubusercontent.com/woziwrt/bpi-r4-openwrt-builder/refs/heads/main/my_files/200-wozi-libiwinfo-fix_noise_reading_for_radios.patch \
  -O openwrt/package/network/utils/iwinfo/patches/200-wozi-libiwinfo-fix_noise_reading_for_radios.patch
-
-### original txpower fix
-#wget https://raw.githubusercontent.com/woziwrt/bpi-r4-openwrt-builder/refs/heads/main/my_files/99999_tx_power_check.patch \
- #-O mtk-openwrt-feeds/autobuild/unified/filogic/mac80211/24.10/files/package/kernel/mt76/patches/99999_tx_power_check.patch
 
 ### fix "use-tx_power-from-default-fw-if-EEPROM-contains-0"
 wget https://github.com/openwrt/mt76/commit/aaf90b24fde77a38ee9f0a60d7097ded6a94ad1f.patch \
